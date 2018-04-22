@@ -297,7 +297,12 @@ class PayPalWPP(object):
         return nvp_obj
 
     def refundTransaction(self, params):
-        raise NotImplementedError
+        defaults = {"method": "RefundTransaction"}
+        required = ("transactionid")
+
+        nvp_obj = self._fetch(params, required, defaults)
+        if nvp_obj.flag:
+            raise PayPalFailure(nvp_obj.flag_info)
 
     def doReferenceTransaction(self, params):
         """
