@@ -298,7 +298,7 @@ class PayPalWPP(object):
 
     def refundTransaction(self, params):
         defaults = {"method": "RefundTransaction"}
-        required = ("transactionid")
+        required = ["transactionid"]
 
         nvp_obj = self._fetch(params, required, defaults)
         if nvp_obj.flag:
