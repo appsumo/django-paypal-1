@@ -88,7 +88,7 @@ class PayPalStandardBase(Model):
     receiver_email = models.EmailField(max_length=254, blank=True)
     receiver_id = models.CharField(max_length=255, blank=True)  # 258DLEHY2BDK6
     residence_country = models.CharField(max_length=2, blank=True)
-    test_ipn = models.BooleanField(default=False, blank=True)
+    test_ipn = models.BooleanField(default=False, blank=False)
     txn_id = models.CharField("Transaction ID", max_length=255, blank=True, help_text="PayPal transaction ID.",
                               db_index=True)
     txn_type = models.CharField("Transaction Type", max_length=255, blank=True, help_text="PayPal transaction type.")
@@ -223,7 +223,7 @@ class PayPalStandardBase(Model):
 
     # Non-PayPal Variables - full IPN/PDT query and time fields.
     ipaddress = models.GenericIPAddressField(blank=True, null=True)
-    flag = models.BooleanField(default=False, blank=True)
+    flag = models.BooleanField(default=False, blank=False)
     flag_code = models.CharField(max_length=16, blank=True)
     flag_info = models.TextField(blank=True)
     query = models.TextField(blank=True)  # What Paypal sent to us initially
